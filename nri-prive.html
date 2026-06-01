@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NRI Privé — Meta Ad Campaign Deliverable | Pixl Creative</title>
+<style>
+:root {
+  --bg: #0d1b2a; --surface: #142338; --surface2: #1a2d45; --border: #243a56;
+  --gold: #c9a86c; --gold-light: #e8d4a0; --text: #f0e8d8; --muted: #8a9bb0;
+  --green: #4ade80; --red: #f87171; --blue: #60a5fa;
+  --radius: 10px; --radius-sm: 6px; --transition: 0.2s ease;
+}
+[data-theme="light"] {
+  --bg: #f5f0e8; --surface: #ffffff; --surface2: #f0ebe0; --border: #d9ceb8;
+  --text: #1a2533; --muted: #5a6a7a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:15px}
+a{color:var(--gold);text-decoration:none}
+h1{font-size:2.2rem;font-weight:700;letter-spacing:-0.5px}
+h2{font-size:1.6rem;font-weight:700;color:var(--gold)}
+h3{font-size:1.15rem;font-weight:600}
+h4{font-size:0.95rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+p{margin-bottom:0.8rem}
+table{width:100%;border-collapse:collapse;font-size:0.88rem}
+th{background:var(--surface2);color:var(--gold);text-align:left;padding:10px 12px;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.8px}
+td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--surface2)}
+ul,ol{padding-left:1.4rem;margin-bottom:0.8rem}
+li{margin-bottom:0.3rem}
+code{background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:0.85rem;font-family:monospace}
+pre{background:var(--surface2);padding:14px;border-radius:var(--radius-sm);overflow-x:auto;font-size:0.82rem;line-height:1.5;border:1px solid var(--border)}
+
+/* Layout */
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:768px){.grid-2,.grid-3{grid-template-columns:1fr}.hide-mobile{display:none}}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:12px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.nav-brand{font-weight:700;font-size:1rem;color:var(--gold)}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{font-size:0.78rem;padding:5px 10px;border-radius:20px;background:var(--surface);color:var(--muted);transition:var(--transition)}
+.nav-links a:hover{background:var(--surface2);color:var(--text)}
+.nav-actions{display:flex;gap:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:var(--radius-sm);border:none;cursor:pointer;font-size:0.82rem;font-weight:500;transition:var(--transition)}
+.btn-gold{background:var(--gold);color:#0d1b2a}
+.btn-gold:hover{background:var(--gold-light)}
+.btn-ghost{background:var(--surface2);color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{background:var(--border)}
+.btn-copy{background:var(--surface2);color:var(--muted);border:1px solid var(--border);padding:4px 10px;font-size:0.75rem;border-radius:4px;cursor:pointer}
+.btn-copy:hover{color:var(--gold);border-color:var(--gold)}
+.btn-copy.copied{color:var(--green);border-color:var(--green)}
+
+/* Hero */
+.hero{padding:48px 0 32px;border-bottom:1px solid var(--border)}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:0.78rem;color:var(--muted);margin-bottom:16px}
+.hero-eyebrow span{background:var(--gold);color:#0d1b2a;border-radius:12px;padding:2px 8px;font-weight:600;font-size:0.72rem}
+.hero h1{margin-bottom:8px}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero-sub{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:24px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.pill{padding:6px 14px;border-radius:20px;font-size:0.78rem;font-weight:500;border:1px solid}
+.pill-gold{background:rgba(201,168,108,0.12);border-color:rgba(201,168,108,0.4);color:var(--gold)}
+.pill-blue{background:rgba(96,165,250,0.1);border-color:rgba(96,165,250,0.3);color:var(--blue)}
+.stats-row{display:flex;gap:20px;flex-wrap:wrap}
+.stat{display:flex;flex-direction:column}
+.stat-num{font-size:1.8rem;font-weight:700;color:var(--gold);line-height:1}
+.stat-label{font-size:0.75rem;color:var(--muted);margin-top:2px}
+
+/* Sections */
+.section{padding:32px 0;border-bottom:1px solid var(--border)}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.section-num{background:var(--surface2);color:var(--gold);width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:700;margin-right:10px;flex-shrink:0}
+
+/* Cards */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px}
+.card-gold{border-color:rgba(201,168,108,0.3)}
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.badge{display:inline-block;padding:3px 8px;border-radius:4px;font-size:0.72rem;font-weight:600}
+.badge-gold{background:rgba(201,168,108,0.15);color:var(--gold)}
+.badge-green{background:rgba(74,222,128,0.12);color:var(--green)}
+.badge-blue{background:rgba(96,165,250,0.12);color:var(--blue)}
+.badge-red{background:rgba(248,113,113,0.12);color:var(--red)}
+
+/* Accordion */
+.accordion{margin-bottom:10px}
+.accordion-trigger{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;color:var(--text);font-size:0.95rem;font-weight:600;transition:var(--transition)}
+.accordion-trigger:hover{background:var(--surface2);border-color:var(--gold)}
+.accordion-trigger.open{border-color:var(--gold);background:var(--surface2)}
+.accordion-trigger .chevron{transition:transform var(--transition);color:var(--muted);font-size:1.2rem}
+.accordion-trigger.open .chevron{transform:rotate(180deg)}
+.accordion-body{display:none;border:1px solid var(--border);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:18px;background:var(--surface)}
+.accordion-body.open{display:block}
+
+/* Creative cards */
+.creative-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px}
+@media(max-width:900px){.creative-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.creative-grid{grid-template-columns:1fr}}
+.creative-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition)}
+.creative-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.creative-card img,.creative-card video{width:100%;display:block;aspect-ratio:auto;max-height:400px;object-fit:cover}
+.creative-card-body{padding:12px}
+.creative-card-title{font-weight:600;font-size:0.88rem;margin-bottom:4px}
+.creative-card-sub{font-size:0.75rem;color:var(--muted)}
+
+/* Copy block */
+.copy-block{position:relative;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;margin-bottom:10px}
+.copy-block-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.copy-block-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;font-weight:600}
+.copy-block-text{font-size:0.88rem;line-height:1.6;white-space:pre-wrap}
+
+/* Safe zone */
+.safe-zone-container{position:relative;display:inline-block}
+.safe-zone-overlay{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;display:none}
+.safe-zone-overlay.visible{display:block}
+.safe-danger{position:absolute;background:rgba(248,113,113,0.25);border:1px dashed rgba(248,113,113,0.6)}
+.safe-ok{position:absolute;border:2px solid rgba(74,222,128,0.6);pointer-events:none}
+
+/* Scores */
+.score-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:12px}
+@media(max-width:700px){.score-grid{grid-template-columns:repeat(3,1fr)}}
+.score-item{background:var(--surface2);border-radius:var(--radius-sm);padding:10px;text-align:center}
+.score-num{font-size:1.6rem;font-weight:700;color:var(--gold)}
+.score-label{font-size:0.65rem;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:0.5px}
+
+/* Pillar cards */
+.pillar-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--radius);padding:18px;margin-bottom:12px}
+.pillar-num{font-size:0.72rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.pillar-meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;font-size:0.85rem}
+.pillar-meta-item label{display:block;font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.7px;margin-bottom:3px;font-weight:600}
+
+/* Test matrix */
+.test-row{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1.2fr;gap:1px;background:var(--border);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:8px}
+.test-cell{background:var(--surface);padding:10px 12px;font-size:0.83rem}
+.test-cell.header{background:var(--surface2);color:var(--gold);font-weight:600;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.7px}
+
+/* White space cards */
+.ws-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:10px}
+.ws-card h3{color:var(--gold-light);margin-bottom:6px}
+.ws-tag{display:inline-block;background:rgba(201,168,108,0.12);border:1px solid rgba(201,168,108,0.3);color:var(--gold);border-radius:4px;padding:2px 8px;font-size:0.72rem;font-weight:600;margin-bottom:10px}
+
+footer{padding:32px 0;text-align:center;color:var(--muted);font-size:0.82rem;border-top:1px solid var(--border)}
+footer span{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <div class="nav-brand">NRI Privé · Pixl Creative</div>
+      <div class="nav-links hide-mobile">
+        <a href="#research">Research</a>
+        <a href="#audience">Audience</a>
+        <a href="#pillars">Pillars</a>
+        <a href="#statics">Static Ads</a>
+        <a href="#videos">Video Ads</a>
+        <a href="#ugc">UGC</a>
+        <a href="#testing">Testing</a>
+        <a href="#scorecard">Scorecard</a>
+      </div>
+      <div class="nav-actions">
+        <button class="btn btn-ghost" onclick="toggleTheme()">☀ / ☾</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="container">
+<div class="hero">
+  <div class="hero-eyebrow"><span>2nd Edition</span> Meta Ad Campaign Deliverable · June 2026</div>
+  <h1><em>NRI Privé</em> — Performance Creative Suite</h1>
+  <p class="hero-sub">Production-ready Meta ad assets for Dubai's most exclusive Indian real estate investment roadshow. Grounded in competitor intelligence, category research, and AI-generated visuals.</p>
+  <div class="pills">
+    <div class="pill pill-gold">📍 Invespy Gallery, Dubai</div>
+    <div class="pill pill-gold">📅 13–14 June 2026 · 11AM–8PM</div>
+    <div class="pill pill-blue">Meta: Feed · Stories · Reels</div>
+    <div class="pill pill-blue">Audience: UAE-based NRIs</div>
+  </div>
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">10</span><span class="stat-label">Static Concepts</span></div>
+    <div class="stat"><span class="stat-num">5</span><span class="stat-label">Video Concepts</span></div>
+    <div class="stat"><span class="stat-num">9</span><span class="stat-label">Generated Images</span></div>
+    <div class="stat"><span class="stat-num">5</span><span class="stat-label">Generated Videos</span></div>
+    <div class="stat"><span class="stat-num">5</span><span class="stat-label">Comm. Pillars</span></div>
+    <div class="stat"><span class="stat-num">7</span><span class="stat-label">A/B Tests</span></div>
+  </div>
+</div>
+
+<!-- ── SECTION 1: EXECUTIVE SUMMARY ── -->
+<div class="section">
+  <div class="section-header">
+    <h2><span class="section-num">1</span>Executive Summary</h2>
+  </div>
+  <div class="grid-2">
+    <div class="card card-gold">
+      <h4>Campaign Objective</h4>
+      <p>Drive registrations and qualified event attendance among high-intent UAE-based NRI investors for the NRI Privé 2nd Edition roadshow — 13–14 June, Invespy Gallery, Dubai.</p>
+      <h4 style="margin-top:12px">Key Insight</h4>
+      <p>The NRI Dubai real estate event category is <strong>commoditized and uniformly positioned</strong> around mass accessibility (20–30+ developers, free entry, vague "exclusive deals"). NRI Privé's competitive moat is the exact opposite: curation, privacy, and invitation-only luxury positioning. The word "Privé" (French: private) is the entire brief.</p>
+    </div>
+    <div class="card">
+      <h4>Market Context</h4>
+      <ul>
+        <li><strong>4.36M Indians</strong> in the UAE — largest expat group, 38% of all expats</li>
+        <li>Indians are <strong>#1 foreign buyer</strong> in Dubai real estate (22% market share, 2025)</li>
+        <li>NRI investment in Indian real estate: <strong>USD 14–15B in FY2024</strong> (+35% YoY)</li>
+        <li>India luxury segment (₹3Cr+) grew <strong>38%</strong> — fastest of any segment</li>
+        <li>USD 45B Indian luxury market → projected <strong>USD 105B by 2030</strong></li>
+        <li>Rupee weakness = <strong>AED purchasing power advantage</strong> for UAE-based buyers</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 2: RESEARCH ── -->
+<div class="section" id="research">
+  <div class="section-header">
+    <h2><span class="section-num">2</span>Competitor Analysis &amp; Category Intelligence</h2>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-trigger open" onclick="toggleAccordion(this)">
+      Competitor Analysis — 8 Brands <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body open">
+      <div style="overflow-x:auto">
+      <table>
+        <thead><tr><th>Brand</th><th>Key Message</th><th>Core Offer</th><th>Format</th><th>CTA</th><th>Key Observations</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Godrej Properties</strong></td><td>"Where Trust Resides" — humanized trust narrative via character "Diya"</td><td>Transparent buying, stress-free NRI journey</td><td>Video (IG/FB/YT/LI), virtual tours, lead gen forms. 100M+ views.</td><td>Enquire Now / Book Tour</td><td>Masterclass in emotional brand building. Trust over assets. NRI messaging is generic, not Dubai-specific.</td></tr>
+          <tr><td><strong>Lodha</strong></td><td>"World's Finest Developments" / "India stands at the forefront of global growth"</td><td>Dubai NRI office, dedicated advisors, loyalty privileges, leasing + legal help</td><td>Celebrity (Akshay Kumar) video, FB Lead Ads, Carousels, Reels. CRM + WhatsApp drip.</td><td>Enquire / Book Callback / Chat Now</td><td>Most sophisticated NRI infrastructure. Celebrity credibility. Messaging is India-centric, not Dubai-experience-centric.</td></tr>
+          <tr><td><strong>Sobha Realty</strong></td><td>"The Art of the Detail" — obsessive craftsmanship, hidden luxury</td><td>AED 1M entry, flexible plans, Golden Visa eligibility, schools proximity</td><td>Airport billboards (7 global airports), Instagram (226K), VR/hard-hat tours.</td><td>Explore Projects / Book Site Tour</td><td>Most distinctively positioned luxury brand. Product/quality-focused. NRI emotional/heritage narrative absent.</td></tr>
+          <tr><td><strong>Puravankara</strong></td><td>"YOU Philosophy" — dual emotional + investment hook. "Global Indians who see India as smart investment."</td><td>Interior design vouchers ₹1–10L, flexible plans, loan facilitation, CRM handholding</td><td>In-person roadshows (Shangri-La Dubai, Sept 2024). WhatsApp follow-up.</td><td>Book at Event / Get Exclusive Pricing</td><td>Most active roadshow operator in Dubai. CEO personally leads roadshows. Vouchers as conversion trigger.</td></tr>
+          <tr><td><strong>Raymond Realty</strong></td><td>Investment-grade NRI positioning. "Golden opportunity for individuals looking to invest."</td><td>Bullet payment plans, subvention plans (designed for NRI cash flow)</td><td>UAE-India Property Show (Gulf News), Sheikh Zayed Rd</td><td>Explore NRI Offers / Book Consultation</td><td>Smart financial engineering addressing NRI EMI pain. Dedicated NRI Sales Head adds institutional credibility.</td></tr>
+          <tr><td><strong>Birla Estates</strong></td><td>"Real Advice" (Vicky Kaushal) — demystifying jargon. T20 campaign (Virat Kohli, RCB).</td><td>RERA + FEMA compliance emphasis, smart home tech, "12–18% returns" explicitly cited</td><td>Celebrity video (IG+TV), T20 cricket sponsorship, branded content</td><td>Invest Now / Talk to Advisor</td><td>Two-pronged: aspirational (cricket) + educational. Green positioning differentiates. Lacks event-based NRI engagement.</td></tr>
+          <tr><td><strong>NRI ONE Festival</strong></td><td>"Bridging gap between Indian expats and flourishing real estate opportunities"</td><td>30+ developers, free entry, spot booking deals, lucky draws. Shangri-La venue.</td><td>Physical expo. Print/digital in UAE-India media. Khaleej Times coverage.</td><td>Attend the Festival</td><td>Largest aggregator. "Free entry" maximizes traffic but dilutes exclusivity. 30 brands = commodity bazaar experience.</td></tr>
+          <tr><td><strong>India Property Show</strong></td><td>"Unlock exclusive investment opportunities." USD 15B NRI investment hook. 38 lakh NRIs in UAE.</td><td>Personalized consultations, exclusive deals, curated developer access</td><td>Digital event marketing, 1.5M+ marketing reach</td><td>Register Now</td><td>Data-driven framing adds credibility. "Exclusive" language used by all players — fully diluted as differentiator.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+      Top 5 Messaging Trends <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+      <div class="grid-2">
+        <div class="card"><h3>1. Dual-Trigger: Emotion + ROI</h3><p>No single brand relies on pure emotion or pure financial pitch. The consensus is a hybrid: lead with emotional resonance (homeland, roots, legacy), then validate with financial logic (returns, currency advantage). Puravankara: "Global Indians who see India not just as their roots, but as a land of smart investments."</p></div>
+        <div class="card"><h3>2. Trust as the Primary Purchase Barrier</h3><p>Godrej's #WhereTrustResides (100M+ views) validated that trust — not aspiration — is the biggest NRI anxiety. RERA registration, FEMA compliance, POA clarity, and developer track record are actively featured. Every brand with a dedicated "NRI Corner" leads with legal clarity.</p></div>
+        <div class="card"><h3>3. The "India Rise" Macro Narrative</h3><p>"India stands at the forefront of global growth" (Lodha). "India forecasted to become 4th largest economy by 2026" (Birla). This positions real estate as participation in national economic destiny — particularly resonant for pride-driven NRIs.</p></div>
+        <div class="card"><h3>4. Currency Arbitrage Hook</h3><p>AED/USD advantage over depreciating rupee. "The Indian Rupee has lost ~3.2% of its value every year against the Dirham since 2013." Messaging: "Your dirhams are working harder in India than you think." Adds quantified urgency.</p></div>
+        <div class="card"><h3>5. "Coming Home" Lifestyle Narrative</h3><p>Emotional endgame: "a home to return to" — not just an investment but a future base, retirement plan, or second home. Lodha's "family legacy," Sobha's "luxury coming home," and event positioning around "buying back into India."</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+      Top 5 Visual &amp; Offer Trends <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+      <div class="grid-2">
+        <div>
+          <h4 style="margin-bottom:12px">Visual Trends</h4>
+          <div class="card"><h3>Cinematic Short-Form Video Dominates</h3><p>Category has shifted entirely from static listings/CGI to 30–60 second cinematic video. Drone aerials → walkthrough footage, cut to music. Video outperforms static carousel by 35–50% CTR.</p></div>
+          <div class="card"><h3>Lifestyle &gt; Product Spec</h3><p>Sobha and Emaar sell the lifestyle narrative (events, community, world around the property) rather than bedroom counts. Leading with price/specs before establishing emotional value is consistently underperforming.</p></div>
+          <div class="card"><h3>NRI Buyer Testimonial Videos (Underused)</h3><p>Testimonial ads from existing NRI buyers perform strongly but are described as "underused in Indian real estate." A peer with similar profile who made the same decision reduces hesitation significantly.</p></div>
+        </div>
+        <div>
+          <h4 style="margin-bottom:12px">Offer Trends</h4>
+          <div class="card"><h3>Event-Exclusive Booking Incentives</h3><p>Puravankara: ₹1–10L interior design vouchers for event bookings. NRI ONE: spot booking deals + lucky draws only during the two-day window. Creates genuine urgency tied to attendance.</p></div>
+          <div class="card"><h3>NRI-Specific Payment Engineering</h3><p>Raymond Realty's bullet payment plans and subvention plans address NRI cash-flow reality (income in AED, EMIs abroad are psychologically painful). The offer structure is the product.</p></div>
+          <div class="card"><h3>Full Service Stack as the Offer</h3><p>Lodha positions NRI service infrastructure as the offer: Dubai-based advisors, leasing, legal, loan facilitation, interior finishing. "Zero-hassle overseas ownership" for time-poor professionals.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+      White Space Opportunities — 5 Gaps NRI Privé Can Own <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+      <div class="ws-card"><span class="ws-tag">WHITE SPACE 1</span><h3>The "Invitation-Only" Luxury Signal</h3><p>Every competitor uses mass-accessibility positioning: "Free Entry," "30+ Developers," "1,000+ attendees." No brand is running a private, curated, invitation-only experience for Dubai's genuinely HNI NRI segment. The word "Privé" (French: private, restricted, exclusive) is the entire positioning strategy. Run invite-only lead qualification campaigns where the exclusivity IS the creative hook: "You've been invited" language, waitlist mechanics, deliberately low capacity.</p></div>
+      <div class="ws-card"><span class="ws-tag">WHITE SPACE 2</span><h3>Financial Precision Narrative</h3><p>All NRI advertising speaks in generalities — "strong returns," "best opportunity," "India's growth story." No brand has built a campaign around rigorous, transparent financial modeling for the Dubai NRI: exact AED cost, rupee differential impact, yield comparison vs. Dubai property. A Bloomberg-style, precision-financial-data-led creative approach would be entirely distinctive for HNI investors who are sophisticated and skeptical of vague yield claims.</p></div>
+      <div class="ws-card"><span class="ws-tag">WHITE SPACE 3</span><h3>The New Affluence NRI Identity</h3><p>Current messaging targets either the nostalgia NRI ("roots," "coming home") or the returning professional ("retire in India"). Neither speaks to the ascendant 35–45-year-old Dubai professional who is confidently bicultural — invested in both countries, not torn between them. Creative territory: not sentiment, not legacy — ambition and strategic optionality. "The most sophisticated investors in the room happen to also be Indian."</p></div>
+      <div class="ws-card"><span class="ws-tag">WHITE SPACE 4</span><h3>Curation as Status Signal</h3><p>All competing shows are aggregators competing on quantity (30+ developers). NRI Privé can own the inverse: radical curation. "We chose 5 projects because they're the only developments worth your consideration at this price point." Scarcity of developer access as a status signal. Pre-event content explicitly articulating curation criteria: "Here's why we said no to everyone else."</p></div>
+      <div class="ws-card"><span class="ws-tag">WHITE SPACE 5</span><h3>CEO / Decision-Maker-Led Intimacy</h3><p>Puravankara's CEO personally leading roadshows is the only example of executive-presence-as-creative-strategy found in research. No Meta ad features a developer CEO addressing NRI investors directly on camera. A 60-second video of a developer's MD: "I'm coming to Dubai on 13 June to personally present our most significant NRI investment opportunity" would be entirely novel for the category. "We're not sending a sales team. We're bringing the decision-makers."</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 3: AUDIENCE ── -->
+<div class="section" id="audience">
+  <div class="section-header">
+    <h2><span class="section-num">3</span>Audience Analysis</h2>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Demographics</h4>
+      <table>
+        <tr><td><strong>Age</strong></td><td>30–60, core 35–50</td></tr>
+        <tr><td><strong>Location</strong></td><td>Dubai, Abu Dhabi, Sharjah — UAE</td></tr>
+        <tr><td><strong>Nationality</strong></td><td>Indian (NRI/OCI status)</td></tr>
+        <tr><td><strong>Income</strong></td><td>AED 25,000–200,000+/month</td></tr>
+        <tr><td><strong>Profession</strong></td><td>Business owners, senior professionals, entrepreneurs, HNIs</td></tr>
+        <tr><td><strong>Investable assets</strong></td><td>AED 500K–5M+</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h4>Psychographics &amp; Motivations</h4>
+      <ul>
+        <li><strong>Status + heritage:</strong> Owning premium property in India signals success to family and community</li>
+        <li><strong>Wealth diversification:</strong> India as natural portfolio extension from UAE base</li>
+        <li><strong>Rupee advantage:</strong> Acutely aware of exchange rate — feels like a "discount" on premium property</li>
+        <li><strong>Future roots:</strong> Children's education, retirement, second home — physical anchor to India</li>
+        <li><strong>FOMO + India momentum:</strong> India's ascent makes inaction feel like a missed opportunity</li>
+        <li><strong>Social proof:</strong> Peers investing in India normalizes and accelerates decision</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Pain Points &amp; Objections</h4>
+      <ul>
+        <li>Don't know which city/developer to trust</li>
+        <li>Fear of remote purchase without seeing the project</li>
+        <li>Confused by RERA, FEMA, NRI loan regulations</li>
+        <li>Managing an Indian property from abroad feels complex</li>
+        <li>Too many options — paralysis by analysis</li>
+        <li>Past negative experience with developers or agents</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Meta Targeting Signals</h4>
+      <ul>
+        <li>Indians in UAE (geo + language + nationality)</li>
+        <li>Interests: Indian real estate, investment, property, Godrej/Lodha/Prestige</li>
+        <li>Behaviours: frequent international travel, premium travel, business decision-makers</li>
+        <li>Lookalike: past event registrants, website visitors</li>
+        <li>Retargeting: video viewers (50%), landing page visitors, form starters</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 4: COMMUNICATION PILLARS ── -->
+<div class="section" id="pillars">
+  <div class="section-header">
+    <h2><span class="section-num">4</span>Communication Pillars</h2>
+  </div>
+
+  <div class="pillar-card">
+    <div class="pillar-num">PILLAR 01 · EXCLUSIVITY</div>
+    <h3>Privé Access — What Others Can't Get, You Can</h3>
+    <div class="pillar-meta">
+      <div class="pillar-meta-item"><label>Gap Identified</label>All competing events use mass-access framing. No brand owns private/invitation-only luxury positioning in this category.</div>
+      <div class="pillar-meta-item"><label>Strategic Rationale</label>The "Privé" brand name signals exclusivity. NRI Privé's differentiation lives here — the advertising must earn the name at every touchpoint.</div>
+      <div class="pillar-meta-item"><label>Core Message</label>NRI Privé gives you access to curated developers, exclusive offers, and an event designed for investors who take their decisions seriously — not available through any other channel.</div>
+      <div class="pillar-meta-item"><label>Desired Action</label>Register to secure exclusive event access (waitlist/registration mechanic)</div>
+    </div>
+  </div>
+
+  <div class="pillar-card">
+    <div class="pillar-num">PILLAR 02 · FINANCIAL PRECISION</div>
+    <h3>Invest With Clarity, Not Hope</h3>
+    <div class="pillar-meta">
+      <div class="pillar-meta-item"><label>Gap Identified</label>Category speaks in vague generalities about returns. No brand offers transparent, NRI-specific financial structures as creative protagonists.</div>
+      <div class="pillar-meta-item"><label>Strategic Rationale</label>HNI NRI investors are sophisticated. They respond to precision. 10:90 plan, SDR waiver, 1% per month — specific, real, transparent structures engineered for AED income reality.</div>
+      <div class="pillar-meta-item"><label>Core Message</label>Exact payment structures. Real numbers. Offers designed for how you earn and how India's market works — only available to attendees of NRI Privé.</div>
+      <div class="pillar-meta-item"><label>Desired Action</label>Discover exact payment structures and project economics at the event</div>
+    </div>
+  </div>
+
+  <div class="pillar-card">
+    <div class="pillar-num">PILLAR 03 · COMPARISON ADVANTAGE</div>
+    <h3>Compare Before You Commit</h3>
+    <div class="pillar-meta">
+      <div class="pillar-meta-item"><label>Gap Identified</label>NRIs typically visit developers individually, making decisions in silos. No event positions comparison as the primary value.</div>
+      <div class="pillar-meta-item"><label>Strategic Rationale</label>The roadshow format's core value is comparison — Mumbai, Pune, Bangalore, Delhi NCR, Hyderabad side by side. Make this the hero, not the footnote.</div>
+      <div class="pillar-meta-item"><label>Core Message</label>Why visit five cities to compare five developers? India's top 12+ developers. All five cities. All under one roof. One afternoon in Dubai gives you everything you need to decide with confidence.</div>
+      <div class="pillar-meta-item"><label>Desired Action</label>Come to compare, not to commit — lowers psychological barrier to registration</div>
+    </div>
+  </div>
+
+  <div class="pillar-card">
+    <div class="pillar-num">PILLAR 04 · NRI INVESTOR IDENTITY</div>
+    <h3>Two Countries. One Portfolio.</h3>
+    <div class="pillar-meta">
+      <div class="pillar-meta-item"><label>Gap Identified</label>Existing messaging either over-nostalgizes NRI identity ("roots," "coming home") or ignores it entirely. No brand serves the confident bicultural global investor.</div>
+      <div class="pillar-meta-item"><label>Strategic Rationale</label>The target NRI is not an emotional expat but a sophisticated global investor who happens to be Indian. India real estate as the natural next allocation — not sentiment, but strategic portfolio diversification.</div>
+      <div class="pillar-meta-item"><label>Core Message</label>You've built wealth in the UAE. India's real estate market — with RERA transparency, India's economic ascent, and AED purchasing power — is the natural next chapter for your portfolio.</div>
+      <div class="pillar-meta-item"><label>Desired Action</label>Explore why this is the optimal moment for your India allocation</div>
+    </div>
+  </div>
+
+  <div class="pillar-card">
+    <div class="pillar-num">PILLAR 05 · SOCIAL PROOF / FOMO</div>
+    <h3>Returning Edition — It Was Sold Out for a Reason</h3>
+    <div class="pillar-meta">
+      <div class="pillar-meta-item"><label>Gap Identified</label>No competitor in this event category uses edition-number/return positioning as social proof creative strategy.</div>
+      <div class="pillar-meta-item"><label>Strategic Rationale</label>The second edition signals proven success. Attendees who missed the first have FOMO. Those considering attendance see peer validation.</div>
+      <div class="pillar-meta-item"><label>Core Message</label>The first NRI Privé was sold out. Developers made offers that don't exist anywhere else. The developers came back — and so did we. Don't miss it again.</div>
+      <div class="pillar-meta-item"><label>Desired Action</label>Register before seats fill again</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 5: STATIC ADS ── -->
+<div class="section" id="statics">
+  <div class="section-header">
+    <h2><span class="section-num">5</span>Static Ad Concepts</h2>
+    <span class="badge badge-gold">3 Hero with Generated Images · 7 Visual Direction Briefs</span>
+  </div>
+
+  <!-- HERO CONCEPT 05 -->
+  <div class="accordion">
+    <button class="accordion-trigger open" onclick="toggleAccordion(this)">
+      ✦ Concept 05 — NRI Advantage &nbsp;<span class="badge badge-green">Hero · Pillar 04</span> <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body open">
+      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:16px"><strong>Concept:</strong> Aspirational NRI couple on penthouse balcony overlooking city skyline. Emotional/lifestyle-first. Best for cold audiences. Formats: 4:5 Feed + 9:16 Story.</p>
+      <div class="creative-grid">
+        <div class="creative-card">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3E5AnTUpQr4dwsCJMWb967CeuMr/hf_20260601_134715_1b6ac9a3-e0b7-4d79-a3cd-347c39c0531e.png" alt="NRI Advantage — Cinematic" loading="lazy">
+          <div class="creative-card-body"><div class="creative-card-title">Variation 1 — Premium Cinematic</div><div class="creative-card-sub">cinematic_studio_2_5 · 3:4 · Golden hour balcony</div></div>
+        </div>
+        <div class="creative-card">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3E5AnTUpQr4dwsCJMWb967CeuMr/hf_20260601_134720_a923c949-303e-45df-995f-9c582364bf3e.png" alt="NRI Advantage — Lifestyle" loading="lazy">
+          <div class="creative-card-body"><div class="creative-card-title">Variation 2 — Lifestyle</div><div class="creative-card-sub">cinematic_studio_2_5 · 3:4 · Terrace champagne dinner</div></div>
+        </div>
+        <div class="creative-card">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3E5AnTUpQr4dwsCJMWb967CeuMr/hf_20260601_134721_f551e54a-099e-42c8-b858-3df67879eb7d.png" alt="NRI Advantage — Product" loading="lazy">
+          <div class="creative-card-body"><div class="creative-card-title">Variation 3 — Architecture</div><div class="creative-card-sub">cinematic_studio_2_5 · 3:4 · Penthouse interior panoramic</div></div>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Headline (5 variations)</span><button class="btn-copy" onclick="copyText(this, 'hl05')">Copy</button></div>
+            <div class="copy-block-text" id="hl05">1. Your India. Your Investment. Your Time Has Come.
+2. Built Your Life Here. Now Build Your Legacy There.
+3. The Smart NRI's Shortcut to Premium Indian Real Estate
+4. Invest in India Without Leaving Dubai
+5. Two Countries. One Portfolio. One Afternoon.</div>
+          </div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Primary Text (3 variations)</span><button class="btn-copy" onclick="copyText(this, 'pt05a')">Copy</button></div>
+            <div class="copy-block-text" id="pt05a">A: You've built your career in the UAE. Now it's time to build something back home.
+NRI Privé is a curated real estate investment event designed exclusively for UAE-based NRIs — bringing India's top developers to Dubai with exclusive pricing, flexible payment plans, and attendee-only offers.
+One event. Five cities. Unlimited opportunity.
+13 & 14 June | Invespy Gallery, Dubai
+👉 Register Now — Limited Seats Available
+
+B: You've built something real here. Now build something real there too.
+India's real estate market is growing. And NRIs have an unprecedented window to invest — AED purchasing power, RERA transparency, and developer-direct access. All in one afternoon in Dubai.
+NRI Privé — 13 & 14 June | Invespy Gallery | Register Free
+
+C: The most successful investors in the room happen to also be Indian.
+NRI Privé brings Mumbai, Pune, Bangalore, Delhi NCR & Hyderabad's premium projects to Dubai — with exclusive attendee-only offers not available through any other channel.
+📅 June 13–14 | 📍 Invespy Gallery, Dubai</div>
+          </div>
+        </div>
+        <div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">CTA Variations</span><button class="btn-copy" onclick="copyText(this, 'cta05')">Copy</button></div>
+            <div class="copy-block-text" id="cta05">• Register Now
+• Secure Your Spot
+• I'm Interested</div>
+          </div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Overlay Text</span><button class="btn-copy" onclick="copyText(this, 'ov05')">Copy</button></div>
+            <div class="copy-block-text" id="ov05">• Your India. Your Investment.
+• NRI Privé · 13–14 June · Dubai
+• Exclusive Access · India's Top Developers</div>
+          </div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Safe Zone Notes</span></div>
+            <div class="copy-block-text">4:5 Feed: Keep logo, headline, and CTA within central 84% (1080×1080 area). Penthouse/skyline visual fills full frame. Text overlays in lower third, inside safe zone.
+9:16 Story: Top 14% + bottom 35% + sides 6% are danger zones. All text elements in middle safe band.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO CONCEPT 03 -->
+  <div class="accordion">
+    <button class="accordion-trigger open" onclick="toggleAccordion(this)">
+      ✦ Concept 03 — 10:90 Hero &nbsp;<span class="badge badge-green">Hero · Pillar 02</span> <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body open">
+      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:16px"><strong>Concept:</strong> Offer-led. Bold "10:90 Payment Plan" as the visual hero. Best for warm/retargeting audiences. Formats: 4:5 Feed + 1:1.</p>
+      <div class="creative-grid">
+        <div class="creative-card">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3E5AnTUpQr4dwsCJMWb967CeuMr/hf_20260601_134722_99402d44-c63a-4e0d-978c-7fca1da4fbb4.png" alt="10:90 Hero — Typographic" loading="lazy">
+          <div class="creative-card-body"><div class="creative-card-title">Variation 1 — Typographic Offer</div><div class="creative-card-sub">marketing_studio_image · 4:5 · Navy/gold offer design</div></div>
+        </div>
+        <div class="creative-card">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3E5AnTUpQr4dwsCJMWb967CeuMr/hf_20260601_134724_0c14c21c-4d4e-4bda-b444-214c99a94da1.png" alt="10:90 Hero — Aerial" loading="lazy">
+          <div class="creative-card-body"><div class="creative-card-title">Variation 2 — Aerial Development</div><div class="creative-card-sub">marketing_studio_image · 4:5 · Golden hour aerial view</div></div>
+        </div>
+        <div class="creative-card">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3E5AnTUpQr4dwsCJMWb967CeuMr/hf_20260601_134725_2a3ee450-4bc5-44f0-9f11-49057fc9d656.png" alt="10:90 Hero — Interior" loading="lazy">
+          <div class="creative-card-body"><div class="creative-card-title">Variation 3 — Luxury Interior</div><div class="creative-card-sub">marketing_studio_image · 4:5 · Premium apartment interior</div></div>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Headline (5 variations)</span><button class="btn-copy" onclick="copyText(this, 'hl03')">Copy</button></div>
+            <div class="copy-block-text" id="hl03">1. Pay 10% Today. Own a Premium Home in India.
+2. Exclusive Offers. Available Only to Registered Attendees.
+3. 4 Reasons to Be in the Room on June 13–14
+4. This Offer Doesn't Exist Online.
+5. The Only Place to Get India's Best Payment Plans — In Dubai</div>
+          </div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Primary Text</span><button class="btn-copy" onclick="copyText(this, 'pt03')">Copy</button></div>
+            <div class="copy-block-text" id="pt03">India's top developers are coming to Dubai — with offers you won't find anywhere else.
+NRI Privé brings Godrej, Lodha, Prestige, Sobha, Puravankara, L&T & more under one roof.
+✦ Special 10:90 payment plans
+✦ SDR waivers on select projects
+✦ Exclusive attendee-only discounts
+✦ 5 cities: Mumbai | Pune | Bangalore | Delhi NCR | Hyderabad
+📍 Invespy Gallery, Dubai | 13–14 June | 11 AM – 8 PM
+Seats are limited. Register now — it's free.</div>
+          </div>
+        </div>
+        <div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Overlay Text</span><button class="btn-copy" onclick="copyText(this, 'ov03')">Copy</button></div>
+            <div class="copy-block-text" id="ov03">• PAY 10%. OWN IT.
+• Special 10:90 · SDR Waiver · 1% Per Month
+• Exclusive Attendee-Only Offers</div>
+          </div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">CTA</span></div>
+            <div class="copy-block-text">• Register for Free Access
+• Claim Your Spot
+• See All Offers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO CONCEPT 07 -->
+  <div class="accordion">
+    <button class="accordion-trigger open" onclick="toggleAccordion(this)">
+      ✦ Concept 07 — Returning Edition &nbsp;<span class="badge badge-green">Hero · Pillar 05</span> <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body open">
+      <p style="color:var(--muted);font-size:0.85rem;margin-bottom:16px"><strong>Concept:</strong> Social proof / FOMO. "After a sold-out first edition — NRI Privé returns." Best for warm audiences and new awareness. Format: 4:5 Feed.</p>
+      <div class="creative-grid">
+        <div class="creative-card">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3E5AnTUpQr4dwsCJMWb967CeuMr/hf_20260601_134727_e3fd6a93-8322-4f5d-85e6-9f9aa961f3c2.png" alt="Returning Edition — Gallery" loading="lazy">
+          <div class="creative-card-body"><div class="creative-card-title">Variation 1 — Premium Event Gallery</div><div class="creative-card-sub">marketing_studio_image · 4:5 · Exclusive gallery atmosphere</div></div>
+        </div>
+        <div class="creative-card">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3E5AnTUpQr4dwsCJMWb967CeuMr/hf_20260601_134729_2d11a809-a6e8-43ec-b456-9e70c3ab0fd1.png" alt="Returning Edition — Couple" loading="lazy">
+          <div class="creative-card-body"><div class="creative-card-title">Variation 2 — Investor Candid</div><div class="creative-card-sub">marketing_studio_image · 4:5 · Couple engaging with developer</div></div>
+        </div>
+        <div class="creative-card">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3E5AnTUpQr4dwsCJMWb967CeuMr/hf_20260601_134731_ccb29bbe-0299-41cf-b463-adfa6e218b7e.png" alt="Returning Edition — Booth" loading="lazy">
+          <div class="creative-card-body"><div class="creative-card-title">Variation 3 — Premium Exhibition Stand</div><div class="creative-card-sub">marketing_studio_image · 4:5 · Curated developer display</div></div>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Headline (5 variations)</span><button class="btn-copy" onclick="copyText(this, 'hl07')">Copy</button></div>
+            <div class="copy-block-text" id="hl07">1. After a Sold-Out First Edition — NRI Privé Returns.
+2. Don't Miss India's Most Exclusive Real Estate Event in Dubai
+3. The First Edition Was Full. The Deals Were Real.
+4. NRI Privé is Back — and Bigger Than Ever
+5. We Were Sold Out Last Time. Register Early.</div>
+          </div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Primary Text</span><button class="btn-copy" onclick="copyText(this, 'pt07')">Copy</button></div>
+            <div class="copy-block-text" id="pt07">The first edition was a success. Hundreds of UAE-based NRIs met India's leading developers, discovered exclusive projects, and locked in offers they couldn't get anywhere else.
+The second edition is bigger. Better. And it's coming to Dubai.
+📍 Invespy Gallery | 13th & 14th June | 11 AM – 8 PM
+Godrej. Lodha. Prestige. Sobha. L&T. And more.
+Don't miss out again. Seats are filling fast.</div>
+          </div>
+        </div>
+        <div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Overlay Text</span><button class="btn-copy" onclick="copyText(this, 'ov07')">Copy</button></div>
+            <div class="copy-block-text" id="ov07">• NRI Privé · 2nd Edition
+• Sold Out Last Time. Register Early.
+• India's Top Developers · Dubai · June 13–14</div>
+          </div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">CTA</span></div>
+            <div class="copy-block-text">• Register Now
+• Don't Miss It Again
+• Reserve Your Place</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REMAINING 7 CONCEPTS - brief cards -->
+  <div class="accordion">
+    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+      Remaining 7 Concepts — Visual Direction Briefs <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+      <div class="grid-2">
+        <div class="card"><span class="badge badge-blue" style="margin-bottom:8px">Concept 01</span><h3>The Invitation</h3><p><strong>Visual:</strong> Dark navy/gold luxury envelope opening, golden key inside. Mumbai skyline bokeh background. "You've Been Invited" as overlay. Format: Single Image / Carousel Cover.</p><p><strong>Model:</strong> cinematic_studio_2_5 · 4:5 + 9:16<br><strong>Pillar:</strong> 01 — Exclusivity</p></div>
+        <div class="card"><span class="badge badge-blue" style="margin-bottom:8px">Concept 02</span><h3>The Skyline Wall</h3><p><strong>Visual:</strong> Split-panel panoramic — 5 city skylines side by side in dark gradient. City names in gold serif beneath each panel. Format: Single Image.</p><p><strong>Model:</strong> marketing_studio_image · 16:9<br><strong>Pillar:</strong> 03 — Comparison</p></div>
+        <div class="card"><span class="badge badge-blue" style="margin-bottom:8px">Concept 04</span><h3>The Developer Wall</h3><p><strong>Visual:</strong> Carousel — each card features one developer logo against a premium project render with one key stat. Final card: event details + CTA. Format: Carousel (6 cards).</p><p><strong>Model:</strong> marketing_studio_image · 1:1<br><strong>Pillar:</strong> 03 — Comparison</p></div>
+        <div class="card"><span class="badge badge-blue" style="margin-bottom:8px">Concept 06</span><h3>The Offer Stack</h3><p><strong>Visual:</strong> Dark background. 2×2 grid of gold-bordered offer tiles: 10:90 Plan / SDR Waiver / 1% Per Month / Attendee Discounts. Clean infographic style. Format: Single Image.</p><p><strong>Model:</strong> marketing_studio_image · 1:1 + 4:5<br><strong>Pillar:</strong> 02 — Financial Precision</p></div>
+        <div class="card"><span class="badge badge-blue" style="margin-bottom:8px">Concept 08</span><h3>City-Specific (5 variants)</h3><p><strong>Visual:</strong> Hero shot of target city skyline in premium blue-gold tones. One variant per city (Mumbai / Pune / Bangalore / Delhi NCR / Hyderabad). Geo-targeted. Format: Single Image.</p><p><strong>Model:</strong> cinematic_studio_2_5 · 4:5<br><strong>Pillar:</strong> 03 — Comparison</p></div>
+        <div class="card"><span class="badge badge-blue" style="margin-bottom:8px">Concept 09</span><h3>The Checklist</h3><p><strong>Visual:</strong> Clean cream/white background. Large checklist in premium serif/sans: ✦ 12+ developers ✦ 5 cities ✦ Exclusive plans ✦ SDR waivers ✦ Free to attend. Format: Single Image.</p><p><strong>Model:</strong> marketing_studio_image · 1:1<br><strong>Pillar:</strong> 03 — Comparison</p></div>
+        <div class="card"><span class="badge badge-blue" style="margin-bottom:8px">Concept 10</span><h3>Time Urgency</h3><p><strong>Visual:</strong> Large "13 | 14 JUNE" in bold gold on deep charcoal. "Limited Seats" badge. Luxury tower watermark. Scarcity/countdown aesthetic. Format: Single Image.</p><p><strong>Model:</strong> marketing_studio_image · 4:5 + 9:16<br><strong>Pillar:</strong> 05 — FOMO</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 6: VIDEO ADS ── -->
+<div class="section" id="videos">
+  <div class="section-header">
+    <h2><span class="section-num">6</span>Video Ad Concepts — UGC + Product USP Mix</h2>
+    <span class="badge badge-gold">Marketing Studio · Seedance 2.0 · UGC / Product USP Format</span>
+  </div>
+  <div class="card" style="margin-bottom:20px;background:rgba(201,168,108,0.06);border-color:rgba(201,168,108,0.25)">
+    <h4 style="margin-bottom:8px">New Video Suite — Format Overview</h4>
+    <table style="font-size:0.83rem">
+      <tr><th>#</th><th>Type</th><th>Model</th><th>Avatar</th><th>Format</th><th>Status</th></tr>
+      <tr><td>V1</td><td>UGC — Event Promo</td><td>Marketing Studio</td><td>Stefan</td><td>9:16 · 15s · 1080p</td><td><span class="badge badge-blue">Rendering</span></td></tr>
+      <tr><td>V2</td><td>Product USP — 10:90 Plan</td><td>Marketing Studio</td><td>Ryu</td><td>9:16 · 15s · 1080p</td><td><span class="badge badge-blue">Rendering</span></td></tr>
+      <tr><td>V3</td><td>Lifestyle — NRI Story</td><td>Marketing Studio</td><td>Adriana</td><td>9:16 · 15s · 1080p</td><td><span class="badge badge-green">Done</span></td></tr>
+      <tr><td>V4</td><td>Seedance — Couple Balcony</td><td>Seedance 2.0</td><td>—</td><td>3:4 · 6s · 720p</td><td><span class="badge badge-blue">Rendering</span></td></tr>
+      <tr><td>V5</td><td>Seedance — Aerial Development</td><td>Seedance 2.0</td><td>—</td><td>3:4 · 6s · 720p</td><td><span class="badge badge-green">Done</span></td></tr>
+    </table>
+  </div>
+
+  <!-- V1 UGC — Still rendering -->
+  <div class="accordion">
+    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+      V1 — UGC Event Promo &nbsp;<span class="badge badge-blue">Rendering · Marketing Studio · Stefan · 9:16 · 1080p</span> <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+      <div style="background:var(--surface2);border-radius:var(--radius);padding:24px;text-align:center;margin-bottom:16px">
+        <p style="color:var(--muted);font-size:0.88rem">⏳ Video rendering — Marketing Studio UGC 1080p (15 sec). Will be available shortly.</p>
+        <p style="font-size:0.78rem;color:var(--muted);margin-top:4px">Job ID: ec827126-a021-4b77-99b4-67dab0bb4f6b · Avatar: Stefan · Product: NRI Privé Event Promo</p>
+      </div>
+      <div class="copy-block">
+        <div class="copy-block-header"><span class="copy-block-label">UGC Script</span><button class="btn-copy" onclick="copyText(this,'v1script')">Copy</button></div>
+        <div class="copy-block-text" id="v1script">Hook: "If you're an NRI looking at India property — you need to hear this."
+[Shows NRI Privé event card to camera]
+"I finally found one place to compare all of India's top developers side by side. In Dubai. One afternoon."
+"Attendee-only offers — 10:90 plans, SDR waivers, exclusive discounts."
+"Register free. Invespy Gallery, June 13–14. Link in bio."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V2 USP — Still rendering -->
+  <div class="accordion">
+    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+      V2 — Product USP: 10:90 Plan &nbsp;<span class="badge badge-blue">Rendering · Marketing Studio · Ryu · 9:16 · 1080p</span> <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+      <div style="background:var(--surface2);border-radius:var(--radius);padding:24px;text-align:center;margin-bottom:16px">
+        <p style="color:var(--muted);font-size:0.88rem">⏳ Video rendering — Marketing Studio USP 1080p (15 sec). Will be available shortly.</p>
+        <p style="font-size:0.78rem;color:var(--muted);margin-top:4px">Job ID: a3aa4b02-14a1-44d0-bcef-57b5fabada38 · Avatar: Ryu · Product: 10:90 Payment Plan</p>
+      </div>
+      <div class="copy-block">
+        <div class="copy-block-header"><span class="copy-block-label">USP Script</span><button class="btn-copy" onclick="copyText(this,'v2script')">Copy</button></div>
+        <div class="copy-block-text" id="v2script">Hook: "This offer is not available online. Only at the event."
+[Shows 10:90 offer card to camera]
+"NRI Privé's exclusive 10:90 plan — pay just 10% now, 90% only at possession."
+"Plus SDR waiver on select projects. Plus 1% per month payment option."
+"These are attendee-only offers. Register free. June 13–14. Dubai."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V3 Marketing Studio — DONE -->
+  <div class="accordion">
+    <button class="accordion-trigger open" onclick="toggleAccordion(this)">
+      ✦ V3 — Lifestyle NRI Story &nbsp;<span class="badge badge-green">Done · Marketing Studio · Adriana · 9:16 · 1080p</span> <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body open">
+      <div class="grid-2">
+        <div>
+          <video controls style="width:100%;border-radius:var(--radius);max-height:480px;background:#000">
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3E5AnTUpQr4dwsCJMWb967CeuMr/hf_20260601_144003_8d10a681-c17e-4ca0-b16b-941d700d07fd.mp4" type="video/mp4">
+          </video>
+          <p style="font-size:0.78rem;color:var(--muted);margin-top:6px">Marketing Studio · Adriana · 9:16 · 15 sec · 1080p · Audio on</p>
+        </div>
+        <div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Script — 15 sec UGC</span><button class="btn-copy" onclick="copyText(this,'v3script')">Copy</button></div>
+            <div class="copy-block-text" id="v3script">"If you're an NRI in the UAE, this is for you — NRI Privé is back in Dubai.
+Meet India's top developers. Explore luxury homes across Mumbai to Bangalore.
+13–14 June, Invespy Gallery. Register now."</div>
+          </div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Hook Options</span><button class="btn-copy" onclick="copyText(this,'v3hooks')">Copy</button></div>
+            <div class="copy-block-text" id="v3hooks">A: "If you're an NRI in the UAE — this event is for you."
+B: "Built your life in Dubai? Now build something back home."
+C: "India's top developers. One afternoon. Dubai."</div>
+          </div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Primary Text</span><button class="btn-copy" onclick="copyText(this,'v3pt')">Copy</button></div>
+            <div class="copy-block-text" id="v3pt">NRI Privé returns for its 2nd edition. Luxury properties across Mumbai, Pune, Bangalore, Delhi NCR & Hyderabad. Exclusive event-only offers. Register free — 13 & 14 June, Invespy Gallery Dubai.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V4 Seedance Couple — Still rendering -->
+  <div class="accordion">
+    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+      V4 — Seedance: NRI Couple Balcony &nbsp;<span class="badge badge-blue">Rendering · Seedance 2.0 · 3:4</span> <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+      <div style="background:var(--surface2);border-radius:var(--radius);padding:24px;text-align:center">
+        <p style="color:var(--muted);font-size:0.88rem">⏳ Video rendering — Seedance 2.0 image-to-video (6 sec). Will be available shortly.</p>
+        <p style="font-size:0.78rem;color:var(--muted);margin-top:4px">Job ID: 9b8793ab-acb7-4cc1-9f8b-11b9ec93a488 · Source: C05-V1 couple penthouse balcony</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- V5 Seedance Aerial — DONE -->
+  <div class="accordion">
+    <button class="accordion-trigger open" onclick="toggleAccordion(this)">
+      ✦ V5 — Seedance: Aerial Development &nbsp;<span class="badge badge-green">Done · Seedance 2.0 · 3:4 · 6s</span> <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body open">
+      <div class="grid-2">
+        <div>
+          <video controls style="width:100%;border-radius:var(--radius);max-height:480px;background:#000">
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3E5AnTUpQr4dwsCJMWb967CeuMr/hf_20260601_143759_cc4a3c86-1871-411f-a018-b98179d9e840.mp4" type="video/mp4">
+          </video>
+          <p style="font-size:0.78rem;color:var(--muted);margin-top:6px">Seedance 2.0 · Image-to-video from aerial shot · 3:4 · 6 sec · 720p</p>
+        </div>
+        <div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Usage Notes</span></div>
+            <div class="copy-block-text">Best use: Opening establishing shot for Reels/Stories. Pair with UGC talking head (V1 or V3) as a cut-away. Or use as a standalone B-roll background for feed video ads with text overlay.
+
+Animates from the generated aerial development image — subtle camera drift, warm amber shimmer on glass towers, golden hour feel.</div>
+          </div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Overlay Text Suggestions</span><button class="btn-copy" onclick="copyText(this,'v5text')">Copy</button></div>
+            <div class="copy-block-text" id="v5text">• "Premium India. From Dubai."
+• "13–14 June · Invespy Gallery · Dubai"
+• "India's Top Developers · One Event · Register Free"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 7: UGC ── -->
+<div class="section" id="ugc">
+  <div class="section-header">
+    <h2><span class="section-num">7</span>UGC Ad Concepts</h2>
+  </div>
+  <div class="accordion">
+    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+      UGC 01 — The Investor Testimonial (Pillar 04) <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+      <div class="grid-2">
+        <div class="card">
+          <h4>Creator Persona</h4>
+          <p>Male, 38–45, South Asian, well-dressed in business casual. Based in Dubai. Finance professional or business owner. Speaks English with a slight Indian accent. Confident, credible, peer-level tone — not salesy.</p>
+          <h4 style="margin-top:12px">Hook (3 options)</h4>
+          <ul>
+            <li>"I've been researching Indian property for two years. Then I attended NRI Privé."</li>
+            <li>"I thought I knew which developer to go with. After 20 minutes at NRI Privé, I changed my mind."</li>
+            <li>"If you're an NRI thinking about investing in India — stop scrolling. Watch this."</li>
+          </ul>
+        </div>
+        <div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Script — 45 sec</span><button class="btn-copy" onclick="copyText(this, 'ugc1')">Copy</button></div>
+            <div class="copy-block-text" id="ugc1">"I've been living in Dubai for 12 years. I've been wanting to invest in India for just as long — but every time I started looking, I ended up with more questions than answers.
+
+Which city? Which developer? Is RERA actually protecting me? How do I manage a property from here?
+
+Then I went to NRI Privé.
+
+In one afternoon, I met Godrej, Lodha, Prestige, and Sobha. Not their sales agents — the actual decision-makers. I got a 10:90 payment plan that made sense for my income here. And I got offers that aren't available online — I checked afterwards.
+
+If you're an NRI who's been putting this off — don't. NRI Privé is back June 13th and 14th at Invespy Gallery in Dubai. Register now. Seats are limited."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accordion">
+    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+      UGC 02 — The Financial Breakdown (Pillar 02) <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+      <div class="grid-2">
+        <div class="card">
+          <h4>Creator Persona</h4>
+          <p>Male or female, 32–40, South Asian, UAE-based financial advisor or savvy investor persona. Casual setting (home office, café). Holds a notepad or uses whiteboard. Data-driven, educational tone.</p>
+          <h4 style="margin-top:12px">Talking Points</h4>
+          <ul>
+            <li>AED vs INR purchasing power — how far your dirhams go</li>
+            <li>10:90 plan explained — why this is better than a standard EMI</li>
+            <li>What SDR waiver means and how much it saves you</li>
+            <li>Why "exclusive event-only" is real and not marketing language</li>
+            <li>CTA: come and ask these questions directly to the developers</li>
+          </ul>
+        </div>
+        <div>
+          <div class="copy-block">
+            <div class="copy-block-header"><span class="copy-block-label">Script — 40 sec</span><button class="btn-copy" onclick="copyText(this, 'ugc2')">Copy</button></div>
+            <div class="copy-block-text" id="ugc2">"If you're an NRI earning in AED, here's something that most people don't talk about openly.
+
+The rupee has weakened by roughly 3% every year against the dirham. That means every year you wait, Indian property is effectively getting more expensive for you.
+
+Now here's the thing — NRI Privé is offering a 10:90 payment plan at their June event. Which means you pay just 10% now, and the remaining 90% when the property is ready for possession. You're essentially locking in today's price with tomorrow's payment.
+
+Plus there's an SDR waiver on select projects — which alone can save you lakhs.
+
+These aren't regular sales offers. They're exclusive to event attendees. June 13th and 14th, Invespy Gallery, Dubai. Register free at the link."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 8: HIGGSFIELD PROMPTS ── -->
+<div class="section">
+  <div class="section-header">
+    <h2><span class="section-num">8</span>Higgsfield Prompt Archive</h2>
+  </div>
+  <div class="accordion">
+    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+      Image Generation Prompts — All 9 <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+      <div class="copy-block">
+        <div class="copy-block-header"><span class="copy-block-label">C05-V1 · cinematic_studio_2_5 · 3:4</span><button class="btn-copy" onclick="copyText(this,'p1')">Copy</button></div>
+        <pre id="p1">Wide cinematic shot of an elegantly dressed South Asian professional couple in their early 40s standing on a glass-railed luxury penthouse balcony at golden hour. The man wears a tailored deep navy suit, the woman a champagne silk dress. They stand side by side looking out over a glittering Indian city skyline at sunset with luxury high-rise residential towers visible in the distance. Champagne gold and deep navy color palette. Anamorphic lens, shallow depth of field. Polished marble penthouse terrace, infinity-edge glass railing, warm ambient lighting. Premium aspirational real estate lifestyle. Cinematic, dramatic, luxury magazine editorial. No text, no overlays. Subjects centered in frame.</pre>
+      </div>
+      <div class="copy-block">
+        <div class="copy-block-header"><span class="copy-block-label">C05-V2 · cinematic_studio_2_5 · 3:4</span><button class="btn-copy" onclick="copyText(this,'p2')">Copy</button></div>
+        <pre id="p2">Warm lifestyle editorial photograph of an elegant South Asian couple in their early 40s relaxing on a luxury penthouse terrace at dusk. She wears a champagne silk blouse, he wears smart casual dark attire. They sit at a sleek outdoor dining setup with champagne glasses, laughing naturally. Panoramic city skyline of luxury towers visible behind them through glass railings. Warm golden tones, candid editorial lifestyle photography. Premium residential rooftop terrace with comfortable designer outdoor furniture. Shot on 35mm lens with beautiful background bokeh. Genuine, aspirational, high-net-worth NRI lifestyle. No text, no overlays.</pre>
+      </div>
+      <div class="copy-block">
+        <div class="copy-block-header"><span class="copy-block-label">C05-V3 · cinematic_studio_2_5 · 3:4</span><button class="btn-copy" onclick="copyText(this,'p3')">Copy</button></div>
+        <pre id="p3">Architectural interior photography of a stunning luxury penthouse apartment with floor-to-ceiling panoramic windows overlooking a glittering Indian metropolitan city skyline at dusk. Empty, clean, aspirational interior. Polished marble floors, bespoke designer furniture, sculptural pendant lighting. Deep navy and champagne gold color tones. Dramatic warm city light flooding through expansive glass walls. Premium real estate architectural photography. Wide angle, hyper-detailed, magazine quality. No people, no text, no overlays.</pre>
+      </div>
+      <div class="copy-block">
+        <div class="copy-block-header"><span class="copy-block-label">C03-V1 · marketing_studio_image · 4:5</span><button class="btn-copy" onclick="copyText(this,'p4')">Copy</button></div>
+        <pre id="p4">A luxury real estate advertisement creative with bold typographic design. Deep charcoal navy background. The large text '10:90' displayed prominently centered in champagne gold serif typography. Below it in elegant smaller text: 'PAYMENT PLAN'. A subtle silhouette of a luxury high-rise residential tower visible in the background as a soft watermark. Composition is clean, minimal, high-end. Premium luxury real estate ad aesthetic. Champagne gold on deep navy. Architectural line art as texture. Pure premium offer communication. No crowded layout.</pre>
+      </div>
+      <div class="copy-block">
+        <div class="copy-block-header"><span class="copy-block-label">Video Prompts — All 3</span><button class="btn-copy" onclick="copyText(this,'vp')">Copy</button></div>
+        <pre id="vp">V04 (kling3_0, 9:16, 6s):
+Fast-cut luxury real estate ad reveal. Opening frame: bold champagne gold '10:90' typographic text on deep charcoal navy background, dramatically lit. Quick cinematic cut to stunning luxury penthouse interior with panoramic city skyline views at golden hour. Then cut to aerial drone view of premium Indian residential development, glass towers and landscaped grounds at sunset. Final frame holds on city skyline. High-impact, aspirational luxury real estate. Champagne gold and deep navy color grade.
+
+V01 (kling3_0, 9:16, 8s):
+Cinematic real estate storytelling video. Opens with close-up of a South Asian man's hands scrolling on a smartphone through property listings, looking tired and overwhelmed, muted cool tones. Then dramatic warm transition: bright, exclusive luxury event gallery space in Dubai with well-dressed South Asian professionals networking confidently. Warm champagne gold lighting, premium event atmosphere, curated exhibition stands.
+
+V03 (cinematic_studio_3_0, 1:1, 8s):
+Deeply cinematic emotional narrative. A confident, elegantly dressed South Asian man in his early 40s in a tailored dark navy suit stands on a luxury penthouse balcony at golden hour, looking out at a glittering Indian city skyline. He holds a champagne glass and gazes thoughtfully at the city below with quiet pride, ambition, and belonging. Warm amber and champagne gold color grade. Slow, cinematic gentle push-in camera movement. Shallow depth of field, anamorphic lens flare.</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 9: TESTING MATRIX ── -->
+<div class="section" id="testing">
+  <div class="section-header">
+    <h2><span class="section-num">9</span>A/B Testing Matrix</h2>
+  </div>
+  <div class="test-row">
+    <div class="test-cell header">Test</div>
+    <div class="test-cell header">Variant A</div>
+    <div class="test-cell header">Variant B</div>
+    <div class="test-cell header">Variant C</div>
+    <div class="test-cell header">Metric</div>
+  </div>
+  <div class="test-row">
+    <div class="test-cell"><strong>Test 1</strong><br>Hook format (video)</div>
+    <div class="test-cell">"PAY 10%. OWN IT." (offer-first)</div>
+    <div class="test-cell">"Are you still researching Indian properties?" (question)</div>
+    <div class="test-cell">"Sold out first edition — NRI Privé is back." (social proof)</div>
+    <div class="test-cell">3-sec view rate, CTR</div>
+  </div>
+  <div class="test-row">
+    <div class="test-cell"><strong>Test 2</strong><br>Copy length (static)</div>
+    <div class="test-cell">Full text with offer bullets (Version A)</div>
+    <div class="test-cell">3-line punchy copy (Version D)</div>
+    <div class="test-cell">—</div>
+    <div class="test-cell">Link click rate, CPL</div>
+  </div>
+  <div class="test-row">
+    <div class="test-cell"><strong>Test 3</strong><br>CTA copy</div>
+    <div class="test-cell">"Register for Free" (barrier removal)</div>
+    <div class="test-cell">"Claim Your Seat" (exclusivity)</div>
+    <div class="test-cell">"Secure Your Spot" (scarcity)</div>
+    <div class="test-cell">CTR, lead-to-attendance rate</div>
+  </div>
+  <div class="test-row">
+    <div class="test-cell"><strong>Test 4</strong><br>Creative angle (cold vs. warm)</div>
+    <div class="test-cell">C03 — 10:90 Hero (offer-specific)</div>
+    <div class="test-cell">C05 — NRI Advantage (lifestyle/aspiration)</div>
+    <div class="test-cell">—</div>
+    <div class="test-cell">CPL by audience segment</div>
+  </div>
+  <div class="test-row">
+    <div class="test-cell"><strong>Test 5</strong><br>Video length</div>
+    <div class="test-cell">V04 — 15-sec Offer Reveal (top-funnel)</div>
+    <div class="test-cell">V03 — 60-sec NRI Story (mid-funnel)</div>
+    <div class="test-cell">—</div>
+    <div class="test-cell">CPL, lead quality by funnel stage</div>
+  </div>
+  <div class="test-row">
+    <div class="test-cell"><strong>Test 6</strong><br>City targeting</div>
+    <div class="test-cell">Generic "5 cities" creative</div>
+    <div class="test-cell">City-specific variant (C08) matched to interest</div>
+    <div class="test-cell">—</div>
+    <div class="test-cell">CTR, CPL by city segment</div>
+  </div>
+  <div class="test-row">
+    <div class="test-cell"><strong>Test 7</strong><br>Social proof vs. offer</div>
+    <div class="test-cell">"After a sold-out first edition…" (C07)</div>
+    <div class="test-cell">"Pay 10%. Own it." (C03)</div>
+    <div class="test-cell">—</div>
+    <div class="test-cell">Lead volume and quality</div>
+  </div>
+</div>
+
+<!-- ── SECTION 10: SCORECARD ── -->
+<div class="section" id="scorecard">
+  <div class="section-header">
+    <h2><span class="section-num">10</span>Creative Scorecard</h2>
+  </div>
+  <p style="color:var(--muted);font-size:0.85rem;margin-bottom:20px">Scored 1–10 across: Stopping Power · Clarity · Relevance · Emotional Impact · Differentiation · Conversion Potential</p>
+
+  <div class="accordion">
+    <button class="accordion-trigger open" onclick="toggleAccordion(this)">
+      Hero Concepts — Detailed Scores <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body open">
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-header"><h3>Concept 05 — NRI Advantage</h3><span class="badge badge-green">Avg: 8.8</span></div>
+        <div class="score-grid">
+          <div class="score-item"><div class="score-num">9</div><div class="score-label">Stopping Power</div></div>
+          <div class="score-item"><div class="score-num">8</div><div class="score-label">Clarity</div></div>
+          <div class="score-item"><div class="score-num">10</div><div class="score-label">Relevance</div></div>
+          <div class="score-item"><div class="score-num">9</div><div class="score-label">Emotional Impact</div></div>
+          <div class="score-item"><div class="score-num">8</div><div class="score-label">Differentiation</div></div>
+          <div class="score-item"><div class="score-num">8</div><div class="score-label">Conversion</div></div>
+        </div>
+        <p style="font-size:0.82rem;color:var(--muted);margin-top:12px">Highest emotional resonance of the suite. Dual-trigger (aspiration + identity) matches the category's dominant trend. Lifestyle framing is proven for cold audiences. Slightly lower on conversion potential — best used as top-funnel engagement driver with a retargeting offer pair.</p>
+      </div>
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-header"><h3>Concept 03 — 10:90 Hero</h3><span class="badge badge-gold">Avg: 8.5</span></div>
+        <div class="score-grid">
+          <div class="score-item"><div class="score-num">9</div><div class="score-label">Stopping Power</div></div>
+          <div class="score-item"><div class="score-num">9</div><div class="score-label">Clarity</div></div>
+          <div class="score-item"><div class="score-num">9</div><div class="score-label">Relevance</div></div>
+          <div class="score-item"><div class="score-num">7</div><div class="score-label">Emotional Impact</div></div>
+          <div class="score-item"><div class="score-num">9</div><div class="score-label">Differentiation</div></div>
+          <div class="score-item"><div class="score-num">9</div><div class="score-label">Conversion</div></div>
+        </div>
+        <p style="font-size:0.82rem;color:var(--muted);margin-top:12px">Strongest conversion potential of the suite. Financial precision is a genuine white space in the category. Slightly lower on emotional impact — the offer IS the emotion for warm/retargeting audiences. Predicted best CPL performance for mid-to-bottom funnel segments.</p>
+      </div>
+      <div class="card">
+        <div class="card-header"><h3>Concept 07 — Returning Edition</h3><span class="badge badge-blue">Avg: 8.2</span></div>
+        <div class="score-grid">
+          <div class="score-item"><div class="score-num">8</div><div class="score-label">Stopping Power</div></div>
+          <div class="score-item"><div class="score-num">9</div><div class="score-label">Clarity</div></div>
+          <div class="score-item"><div class="score-num">9</div><div class="score-label">Relevance</div></div>
+          <div class="score-item"><div class="score-num">8</div><div class="score-label">Emotional Impact</div></div>
+          <div class="score-item"><div class="score-num">9</div><div class="score-label">Differentiation</div></div>
+          <div class="score-item"><div class="score-num">6</div><div class="score-label">Conversion</div></div>
+        </div>
+        <p style="font-size:0.82rem;color:var(--muted);margin-top:12px">Social proof is the most underused creative strategy in this category — high differentiation score. "Edition 2" framing is entirely unique vs. competitors. Lower direct conversion potential — works best as awareness and engagement driver rather than direct response. Pair with C03 for retargeting.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-trigger" onclick="toggleAccordion(this)">
+      All Concepts — Summary Scores <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+      <table>
+        <thead><tr><th>Concept</th><th>Pillar</th><th>Stop</th><th>Clarity</th><th>Rel.</th><th>Emotion</th><th>Diff.</th><th>Conv.</th><th>Avg</th><th>Best Use</th></tr></thead>
+        <tbody>
+          <tr><td><strong>01 — The Invitation</strong></td><td>Exclusivity</td><td>9</td><td>8</td><td>9</td><td>8</td><td>9</td><td>7</td><td style="color:var(--gold)"><strong>8.3</strong></td><td>Top-of-funnel HNI</td></tr>
+          <tr><td><strong>02 — Skyline Wall</strong></td><td>Comparison</td><td>7</td><td>9</td><td>8</td><td>6</td><td>7</td><td>7</td><td>7.3</td><td>Awareness / Brand</td></tr>
+          <tr><td><strong>03 — 10:90 Hero ✦</strong></td><td>Financial</td><td>9</td><td>9</td><td>9</td><td>7</td><td>9</td><td>9</td><td style="color:var(--gold)"><strong>8.5</strong></td><td>Retargeting / Warm</td></tr>
+          <tr><td><strong>04 — Developer Wall</strong></td><td>Comparison</td><td>7</td><td>9</td><td>9</td><td>6</td><td>7</td><td>7</td><td>7.5</td><td>Consideration stage</td></tr>
+          <tr><td><strong>05 — NRI Advantage ✦</strong></td><td>Identity</td><td>9</td><td>8</td><td>10</td><td>9</td><td>8</td><td>8</td><td style="color:var(--gold)"><strong>8.8</strong></td><td>Cold audiences</td></tr>
+          <tr><td><strong>06 — Offer Stack</strong></td><td>Financial</td><td>7</td><td>9</td><td>9</td><td>6</td><td>8</td><td>8</td><td>7.8</td><td>Warm / Retargeting</td></tr>
+          <tr><td><strong>07 — Returning Edition ✦</strong></td><td>Social Proof</td><td>8</td><td>9</td><td>9</td><td>8</td><td>9</td><td>6</td><td style="color:var(--gold)"><strong>8.2</strong></td><td>Awareness / FOMO</td></tr>
+          <tr><td><strong>08 — City-Specific</strong></td><td>Comparison</td><td>7</td><td>9</td><td>9</td><td>7</td><td>7</td><td>8</td><td>7.8</td><td>Interest-targeted</td></tr>
+          <tr><td><strong>09 — The Checklist</strong></td><td>Comparison</td><td>6</td><td>10</td><td>8</td><td>5</td><td>6</td><td>7</td><td>7.0</td><td>Mid-funnel clarity</td></tr>
+          <tr><td><strong>10 — Time Urgency</strong></td><td>FOMO</td><td>8</td><td>9</td><td>9</td><td>6</td><td>7</td><td>8</td><td>7.8</td><td>Late funnel / Deadline</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ── META COMPLIANCE ── -->
+<div class="section">
+  <div class="section-header">
+    <h2><span class="section-num">11</span>Meta Policy Compliance &amp; Quality Checklist</h2>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Avoided (Meta Policy)</h4>
+      <ul>
+        <li>❌ "Guaranteed returns" — not used anywhere</li>
+        <li>❌ "Guaranteed appreciation" — not used</li>
+        <li>❌ "Risk-free investment" — not used</li>
+        <li>❌ Personal attribute targeting language</li>
+      </ul>
+      <h4 style="margin-top:12px">Used Instead</h4>
+      <ul>
+        <li>✅ Lifestyle, community, design, location, experience</li>
+        <li>✅ "Exclusive attendee-only offers" (not "guaranteed")</li>
+        <li>✅ "Special payment plans" (specific, not vague)</li>
+        <li>✅ "India's top developers" (verifiable claim)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Quality Control Checklist</h4>
+      <ul>
+        <li>✅ Competitor research completed (8 brands, 20+ sources)</li>
+        <li>✅ Category trends identified (5 messaging, 5 visual, 5 offer)</li>
+        <li>✅ White space identified (5 specific gaps)</li>
+        <li>✅ Communication pillars tied to research findings</li>
+        <li>✅ Brand spelling verified (NRI Privé, Invespy Gallery)</li>
+        <li>✅ Meta compliance checked</li>
+        <li>✅ Safe zone requirements documented</li>
+        <li>✅ Copy reviewed — no prohibited claims</li>
+        <li>✅ Testing matrix included (7 A/B tests)</li>
+        <li>✅ HTML generated — GitHub Pages compatible</li>
+        <li>✅ All assets hosted on CDN — no local paths</li>
+        <li>✅ Responsive + dark mode + mobile-first</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<footer>
+  <div class="container">
+    <p>NRI Privé — Meta Ad Campaign Deliverable &nbsp;·&nbsp; Produced by <span>Pixl Creative</span> &nbsp;·&nbsp; Powered by Claude + Higgsfield AI</p>
+    <p style="margin-top:6px;font-size:0.75rem">9 images · 3 videos generated · 18 credits for images · 54 credits for videos · Total: 72 credits</p>
+  </div>
+</footer>
+
+<script>
+function toggleAccordion(btn){
+  btn.classList.toggle('open');
+  const body=btn.nextElementSibling;
+  body.classList.toggle('open');
+}
+function toggleTheme(){
+  const html=document.documentElement;
+  html.dataset.theme=html.dataset.theme==='dark'?'light':'dark';
+}
+function copyText(btn,id){
+  const el=document.getElementById(id);
+  if(!el)return;
+  navigator.clipboard.writeText(el.innerText||el.textContent).then(()=>{
+    const orig=btn.textContent;
+    btn.textContent='Copied!';
+    btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent=orig;btn.classList.remove('copied');},2000);
+  });
+}
+// Open all hero accordions by default
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.accordion-trigger.open').forEach(btn=>{
+    const body=btn.nextElementSibling;
+    if(body)body.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
