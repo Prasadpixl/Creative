@@ -224,6 +224,21 @@ footer span{color:var(--gold)}
 .ig-label-tag{display:inline-block;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:0.72rem;color:var(--muted)}
 .ig-label-tag b{color:var(--text)}
 
+/* ── FEEDBACK ZONES ── */
+.fb-zone{margin-top:8px;border-radius:8px;border:1px dashed var(--border);background:var(--surface);padding:10px 12px;transition:border-color 0.2s,background 0.2s}
+.fb-zone:focus-within{border-color:rgba(201,168,108,0.55);border-style:solid}
+.fb-zone.has-feedback{border-color:rgba(201,168,108,0.4);border-style:solid;background:rgba(201,168,108,0.04)}
+.fb-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.fb-lbl{font-size:0.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.9px;display:flex;align-items:center;gap:5px}
+.fb-lbl::before{content:'💬';font-size:0.7rem}
+.fb-badge{background:rgba(201,168,108,0.2);color:var(--gold);border-radius:20px;padding:1px 6px;font-size:0.58rem;font-weight:700;display:none}
+.fb-zone.has-feedback .fb-badge{display:inline-block}
+.fb-clear{font-size:0.6rem;color:var(--muted);cursor:pointer;background:none;border:none;padding:2px 6px;border-radius:4px;display:none;font-family:inherit}
+.fb-clear:hover{background:var(--surface2);color:var(--gold)}
+.fb-zone.has-feedback .fb-clear{display:block}
+.fb-ta{width:100%;background:transparent;border:none;color:var(--text);font-size:0.8rem;resize:vertical;min-height:56px;line-height:1.5;outline:none;font-family:inherit;padding:0;display:block}
+.fb-ta::placeholder{color:var(--muted);opacity:0.55}
+
 /* ── AD CREATIVE OVERLAYS ── */
 .ig-img-wrap{position:relative;overflow:hidden;display:block}
 .ig-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
@@ -1851,12 +1866,57 @@ function copyText(btn,id){
     setTimeout(()=>{btn.textContent=orig;btn.classList.remove('copied');},2000);
   });
 }
-// Open all hero accordions by default
-document.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('.accordion-trigger.open').forEach(btn=>{
-    const body=btn.nextElementSibling;
-    if(body)body.classList.add('open');
+
+/* ── FEEDBACK SYSTEM ── */
+function makeFeedback(key, label) {
+  const saved = localStorage.getItem('fb_' + key) || '';
+  const div = document.createElement('div');
+  div.className = 'fb-zone' + (saved ? ' has-feedback' : '');
+  div.dataset.fbKey = key;
+  div.innerHTML =
+    '<div class="fb-header">' +
+      '<span class="fb-lbl">' + (label || 'Feedback') + '<span class="fb-badge">✓ Has note</span></span>' +
+      '<button class="fb-clear" onclick="clearFb(this)">✕ Clear</button>' +
+    '</div>' +
+    '<textarea class="fb-ta" placeholder="Add revision notes or feedback for this creative…">' + saved + '</textarea>';
+  div.querySelector('textarea').addEventListener('input', function(){
+    const v = this.value;
+    localStorage.setItem('fb_' + key, v);
+    div.classList.toggle('has-feedback', v.length > 0);
   });
+  return div;
+}
+function clearFb(btn) {
+  const zone = btn.closest('.fb-zone');
+  localStorage.removeItem('fb_' + zone.dataset.fbKey);
+  zone.querySelector('textarea').value = '';
+  zone.classList.remove('has-feedback');
+}
+
+function initFeedback() {
+  // Add feedback under each image mockup label
+  document.querySelectorAll('.ig-label').forEach((el, i) => {
+    const concept = el.querySelector('.ig-label-tag') ? el.querySelector('.ig-label-tag').textContent.trim().replace(/\s+/g,' ') : 'creative-' + i;
+    const key = 'img_' + i;
+    el.insertAdjacentElement('afterend', makeFeedback(key, concept));
+  });
+  // Add feedback under each video player section
+  document.querySelectorAll('.ig-story-device').forEach((dev, i) => {
+    const p = dev.nextElementSibling;
+    const target = (p && p.tagName === 'P') ? p : dev;
+    const label = (p && p.tagName === 'P') ? p.textContent.trim() : 'Video ' + (i+1);
+    target.insertAdjacentElement('afterend', makeFeedback('vid_' + i, label));
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Open hero accordions
+  document.querySelectorAll('.accordion-trigger.open').forEach(btn => {
+    const body = btn.nextElementSibling;
+    if (body) body.classList.add('open');
+  });
+  // Init feedback system
+  initFeedback();
 });
 </script>
 </body>
