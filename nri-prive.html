@@ -239,41 +239,132 @@ footer span{color:var(--gold)}
 .fb-ta{width:100%;background:transparent;border:none;color:var(--text);font-size:0.8rem;resize:vertical;min-height:56px;line-height:1.5;outline:none;font-family:inherit;padding:0;display:block}
 .fb-ta::placeholder{color:var(--muted);opacity:0.55}
 
-/* ── AD CREATIVE OVERLAYS ── */
+/* ══════════════════════════════════════════════════════
+   STRATEGIC MINIMALISM OVERLAY SYSTEM v2
+   Source: Meta Ad Library analysis — 109 luxury RE ads + 47 NRI event ads
+   Decision: Image = visual-first (85%/15% rule). Offers go in copy body.
+   Safe zones enforced per Meta guidelines:
+     Feed 4:5  → text within central 88% width, bottom 30% height only
+     Story 9:16 → text in middle 51% band (top 14% + bottom 35% = restricted)
+   ══════════════════════════════════════════════════════ */
+
 .ig-img-wrap{position:relative;overflow:hidden;display:block}
 .ig-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
 .ig-img-wrap.ratio-4-5{aspect-ratio:4/5}
 .ig-img-wrap.ratio-1-1{aspect-ratio:1/1}
 .ig-img-wrap.ratio-16-9{aspect-ratio:16/9}
 .ig-img-wrap.ratio-3-4{aspect-ratio:3/4}
-/* Remove old direct img class ratio rules */
 .ig-post-img{width:100%;display:block;object-fit:cover}
 
-/* Gradient for text readability */
-.ad-grad{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,22,40,0.45) 0%,transparent 32%,transparent 48%,rgba(10,22,40,0.82) 100%);pointer-events:none}
+/* Gradient — light touch at top (brand mark only), rich at bottom (headline zone) */
+.ad-grad{
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(
+    to bottom,
+    rgba(10,22,40,0.22) 0%,
+    transparent 20%,
+    transparent 55%,
+    rgba(10,22,40,0.72) 80%,
+    rgba(10,22,40,0.90) 100%
+  )
+}
 
-/* Top bar */
-.ad-top{position:absolute;top:0;left:0;right:0;padding:7px 9px;display:flex;align-items:center;justify-content:space-between;z-index:2}
-.ad-logo{font-size:0.46rem;font-weight:900;color:#e8d4a0;letter-spacing:2.5px;text-transform:uppercase;text-shadow:0 1px 4px rgba(0,0,0,0.6)}
-.ad-edition{background:rgba(201,168,108,0.92);color:#0a1628;border-radius:20px;padding:2px 6px;font-size:0.43rem;font-weight:800;letter-spacing:0.5px;text-transform:uppercase}
+/* TOP — Brand mark only. Nothing else. Respect 6% edge margin. */
+.ad-top{
+  position:absolute;top:0;left:0;right:0;
+  padding:8% 8% 0;
+  display:flex;align-items:flex-start;justify-content:space-between;z-index:2
+}
+.ad-logo{
+  font-size:0.42rem;font-weight:900;color:#e8d4a0;
+  letter-spacing:3.5px;text-transform:uppercase;
+  text-shadow:0 1px 5px rgba(0,0,0,0.75)
+}
+.ad-edition{
+  background:rgba(201,168,108,0.82);color:#0a1628;
+  border-radius:20px;padding:2px 7px;
+  font-size:0.38rem;font-weight:800;letter-spacing:0.5px;text-transform:uppercase
+}
 
-/* Bottom content */
-.ad-bottom{position:absolute;bottom:0;left:0;right:0;padding:6px 9px 8px;z-index:2}
-.ad-hl{font-size:0.7rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:4px;text-shadow:0 1px 5px rgba(0,0,0,0.65)}
-.ad-chips{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:5px}
-.ad-chip{background:rgba(201,168,108,0.92);color:#0a1628;border-radius:3px;padding:2px 6px;font-size:0.44rem;font-weight:700;text-transform:uppercase;letter-spacing:0.3px;white-space:nowrap}
-.ad-chip-ghost{background:transparent;border:1px solid rgba(232,212,160,0.75);color:#e8d4a0;border-radius:3px;padding:2px 6px;font-size:0.44rem;font-weight:600;white-space:nowrap}
-.ad-meta{display:flex;justify-content:space-between;align-items:center}
-.ad-meta-text{font-size:0.43rem;color:rgba(255,255,255,0.85);display:flex;align-items:center;gap:3px;text-shadow:0 1px 3px rgba(0,0,0,0.5)}
-.ad-cta-micro{background:#fff;color:#0a1628;border-radius:3px;padding:2.5px 8px;font-size:0.44rem;font-weight:800;cursor:pointer;white-space:nowrap;letter-spacing:0.3px;border:none}
+/* BOTTOM — ONE headline + ONE date strip. No stacked chips on image.
+   Offers belong in primary copy text, not on the image.
+   Positioned within bottom 30% of frame (safe zone). */
+.ad-bottom{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:0 8% 9%;
+  z-index:2
+}
+.ad-hl{
+  font-size:0.8rem;font-weight:800;color:#fff;
+  line-height:1.2;margin-bottom:6px;
+  text-shadow:0 2px 8px rgba(0,0,0,0.75);
+  letter-spacing:-0.3px
+}
+/* Date strip — replaces all chip stacking. Clean horizontal rule + date + CTA */
+.ad-date-strip{
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid rgba(232,212,160,0.25);
+  padding-top:5px
+}
+.ad-date-text{
+  font-size:0.42rem;color:rgba(232,212,160,0.88);
+  letter-spacing:1px;text-transform:uppercase;font-weight:600;
+  text-shadow:0 1px 3px rgba(0,0,0,0.6)
+}
+.ad-cta-micro{
+  background:rgba(255,255,255,0.95);color:#0a1628;
+  border-radius:3px;padding:3px 9px;
+  font-size:0.4rem;font-weight:900;cursor:pointer;
+  white-space:nowrap;letter-spacing:0.8px;border:none;
+  text-transform:uppercase
+}
 
-/* Story ad mid-content (between chrome layers, in the safe zone) */
-.ad-story-mid{position:absolute;left:0;right:0;bottom:38%;padding:0 14px;text-align:center;z-index:2}
-.ad-story-logo{font-size:0.55rem;font-weight:900;color:#e8d4a0;letter-spacing:3px;text-transform:uppercase;margin-bottom:5px;text-shadow:0 1px 5px rgba(0,0,0,0.6)}
-.ad-story-hl{font-size:0.82rem;font-weight:800;color:#fff;line-height:1.2;text-shadow:0 2px 8px rgba(0,0,0,0.55);margin-bottom:7px}
-.ad-story-chips{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-bottom:5px}
-.ad-story-chip{background:rgba(201,168,108,0.92);color:#0a1628;padding:2.5px 8px;border-radius:20px;font-size:0.48rem;font-weight:700;text-transform:uppercase;white-space:nowrap}
-.ad-story-sub{font-size:0.5rem;color:rgba(255,255,255,0.85);letter-spacing:0.5px;text-shadow:0 1px 3px rgba(0,0,0,0.5)}
+/* Legacy chips — kept for backwards compat only, not used on new overlays */
+.ad-chips{display:none}
+.ad-chip{background:rgba(201,168,108,0.9);color:#0a1628;border-radius:3px;padding:2px 6px;font-size:0.42rem;font-weight:700;text-transform:uppercase;white-space:nowrap}
+.ad-chip-ghost{background:transparent;border:1px solid rgba(232,212,160,0.6);color:#e8d4a0;border-radius:3px;padding:2px 6px;font-size:0.42rem;font-weight:600;white-space:nowrap}
+/* ad-meta inherits date-strip styling — existing HTML auto-upgrades */
+.ad-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid rgba(232,212,160,0.25);
+  padding-top:5px;margin-top:2px
+}
+.ad-meta-text{
+  font-size:0.42rem;color:rgba(232,212,160,0.88);
+  display:flex;align-items:center;gap:3px;
+  letter-spacing:0.8px;text-transform:uppercase;font-weight:600;
+  text-shadow:0 1px 3px rgba(0,0,0,0.6)
+}
+
+/* STORY SAFE ZONE — Middle 51% band only
+   top: 17% (3% buffer past 14% UI zone)
+   Padding: 12% sides (inside 6% edge zone on 9:16)
+   Max elements: brand mark + headline + 1 date line. No chips. */
+.ad-story-mid{
+  position:absolute;
+  top:17%;
+  left:0;right:0;
+  padding:0 12%;
+  text-align:center;z-index:2
+}
+.ad-story-logo{
+  font-size:0.48rem;font-weight:900;color:#e8d4a0;
+  letter-spacing:4px;text-transform:uppercase;
+  margin-bottom:7px;text-shadow:0 1px 6px rgba(0,0,0,0.7)
+}
+.ad-story-hl{
+  font-size:0.88rem;font-weight:800;color:#fff;
+  line-height:1.18;text-shadow:0 2px 10px rgba(0,0,0,0.65);
+  margin-bottom:8px
+}
+.ad-story-sub{
+  font-size:0.46rem;color:rgba(255,255,255,0.8);
+  letter-spacing:1px;text-shadow:0 1px 3px rgba(0,0,0,0.55);
+  text-transform:uppercase
+}
+/* Story chips still available for specific use cases */
+.ad-story-chips{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-bottom:6px}
+.ad-story-chip{background:rgba(201,168,108,0.9);color:#0a1628;padding:2px 8px;border-radius:20px;font-size:0.44rem;font-weight:700;text-transform:uppercase;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -576,8 +667,7 @@ footer span{color:var(--gold)}
                   <div class="ad-top"><span class="ad-logo">NRI Privé</span><span class="ad-edition">2nd Edition</span></div>
                   <div class="ad-bottom">
                     <div class="ad-hl">Your India. Your Investment.</div>
-                    <div class="ad-chips"><span class="ad-chip">13–14 June</span><span class="ad-chip-ghost">Invespy Gallery · Dubai</span></div>
-                    <div class="ad-meta"><span class="ad-meta-text">📍 Free to attend · Limited seats</span><button class="ad-cta-micro">Register Now</button></div>
+                    <div class="ad-date-strip"><span class="ad-date-text">13–14 June · Invespy Gallery · Dubai</span><button class="ad-cta-micro">Register Free</button></div>
                   </div>
                 </div>
                 <div class="ig-reactions">
@@ -613,11 +703,10 @@ footer span{color:var(--gold)}
                 <div class="ig-img-wrap ratio-4-5">
                   <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3E5AnTUpQr4dwsCJMWb967CeuMr/hf_20260601_134720_a923c949-303e-45df-995f-9c582364bf3e.png" loading="lazy" alt="NRI Advantage Lifestyle">
                   <div class="ad-grad"></div>
-                  <div class="ad-top"><span class="ad-logo">NRI Privé</span><span class="ad-edition">Dubai 2026</span></div>
+                  <div class="ad-top"><span class="ad-logo">NRI Privé</span></div>
                   <div class="ad-bottom">
-                    <div class="ad-hl">Built your life here. Now build your legacy there.</div>
-                    <div class="ad-chips"><span class="ad-chip">10:90 Plan</span><span class="ad-chip">SDR Waiver</span><span class="ad-chip-ghost">Attendee Only</span></div>
-                    <div class="ad-meta"><span class="ad-meta-text">📅 13–14 June · Dubai</span><button class="ad-cta-micro">Secure Your Spot</button></div>
+                    <div class="ad-hl">Built Your Life Here. Now Invest There.</div>
+                    <div class="ad-date-strip"><span class="ad-date-text">13–14 June · Dubai · Free Entry</span><button class="ad-cta-micro">Secure Your Spot</button></div>
                   </div>
                 </div>
                 <div class="ig-reactions">
@@ -645,9 +734,8 @@ footer span{color:var(--gold)}
               <div class="ig-story-overlay"></div>
               <div class="ad-story-mid">
                 <div class="ad-story-logo">NRI Privé</div>
-                <div class="ad-story-hl">5 Cities. 12+ Developers. One Afternoon in Dubai.</div>
-                <div class="ad-story-chips"><span class="ad-story-chip">Mumbai</span><span class="ad-story-chip">Pune</span><span class="ad-story-chip">Bangalore</span><span class="ad-story-chip">Delhi NCR</span><span class="ad-story-chip">Hyderabad</span></div>
-                <div class="ad-story-sub">13–14 June · Invespy Gallery · Dubai · Free Entry</div>
+                <div class="ad-story-hl">Your India. Your Investment.</div>
+                <div class="ad-story-sub">13–14 June · Invespy Gallery · Dubai</div>
               </div>
               <div class="ig-story-top">
                 <div class="ig-prog-bars">
@@ -748,11 +836,10 @@ NRI Privé brings Mumbai, Pune, Bangalore, Delhi NCR & Hyderabad's premium proje
                 <div class="ig-img-wrap ratio-4-5">
                   <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3E5AnTUpQr4dwsCJMWb967CeuMr/hf_20260601_134722_99402d44-c63a-4e0d-978c-7fca1da4fbb4.png" loading="lazy" alt="10:90 Typographic">
                   <div class="ad-grad"></div>
-                  <div class="ad-top"><span class="ad-logo">NRI Privé</span><span class="ad-edition">Exclusive Offer</span></div>
+                  <div class="ad-top"><span class="ad-logo">NRI Privé</span><span class="ad-edition">Exclusive</span></div>
                   <div class="ad-bottom">
                     <div class="ad-hl">Pay 10% Today. Own It.</div>
-                    <div class="ad-chips"><span class="ad-chip">10:90 Plan</span><span class="ad-chip">SDR Waiver</span><span class="ad-chip">1% Per Month</span></div>
-                    <div class="ad-meta"><span class="ad-meta-text">🔒 Attendee-only · Not available online</span><button class="ad-cta-micro">Register Free</button></div>
+                    <div class="ad-date-strip"><span class="ad-date-text">Attendee-Only Offer · 13–14 June</span><button class="ad-cta-micro">Register Free</button></div>
                   </div>
                 </div>
                 <div class="ig-reactions">
@@ -786,11 +873,10 @@ NRI Privé brings Mumbai, Pune, Bangalore, Delhi NCR & Hyderabad's premium proje
                 <div class="ig-img-wrap ratio-1-1">
                   <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3E5AnTUpQr4dwsCJMWb967CeuMr/hf_20260601_134724_0c14c21c-4d4e-4bda-b444-214c99a94da1.png" loading="lazy" alt="Aerial Development">
                   <div class="ad-grad"></div>
-                  <div class="ad-top"><span class="ad-logo">NRI Privé</span><span class="ad-edition">13–14 June</span></div>
+                  <div class="ad-top"><span class="ad-logo">NRI Privé</span></div>
                   <div class="ad-bottom">
-                    <div class="ad-hl">Compare Before You Invest.</div>
-                    <div class="ad-chips"><span class="ad-chip">Mumbai</span><span class="ad-chip">Pune</span><span class="ad-chip">Bangalore</span><span class="ad-chip">Delhi NCR</span><span class="ad-chip">Hyderabad</span></div>
-                    <div class="ad-meta"><span class="ad-meta-text">📍 Invespy Gallery · Dubai</span><button class="ad-cta-micro">Claim Your Spot</button></div>
+                    <div class="ad-hl">5 Cities. One Afternoon. Dubai.</div>
+                    <div class="ad-date-strip"><span class="ad-date-text">13–14 June · Invespy Gallery</span><button class="ad-cta-micro">Claim Your Spot</button></div>
                   </div>
                 </div>
                 <div class="ig-reactions">
@@ -816,9 +902,8 @@ NRI Privé brings Mumbai, Pune, Bangalore, Delhi NCR & Hyderabad's premium proje
               <div class="ig-story-overlay"></div>
               <div class="ad-story-mid">
                 <div class="ad-story-logo">NRI Privé</div>
-                <div class="ad-story-hl">Exclusive Offers. Only at the Event.</div>
-                <div class="ad-story-chips"><span class="ad-story-chip">10:90 Plan</span><span class="ad-story-chip">SDR Waiver</span><span class="ad-story-chip">1% / Month</span></div>
-                <div class="ad-story-sub">Not available online · Registered attendees only</div>
+                <div class="ad-story-hl">Exclusive Offers. Attendees Only.</div>
+                <div class="ad-story-sub">Not Available Online · Register Free</div>
               </div>
               <div class="ig-story-top">
                 <div class="ig-prog-bars">
@@ -909,11 +994,10 @@ Seats are limited. Register now — it's free.</div>
                 <div class="ig-img-wrap ratio-4-5">
                   <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3E5AnTUpQr4dwsCJMWb967CeuMr/hf_20260601_134727_e3fd6a93-8322-4f5d-85e6-9f9aa961f3c2.png" loading="lazy" alt="Event Gallery">
                   <div class="ad-grad"></div>
-                  <div class="ad-top"><span class="ad-logo">NRI Privé</span><span class="ad-edition">2nd Edition · Back</span></div>
+                  <div class="ad-top"><span class="ad-logo">NRI Privé</span><span class="ad-edition">2nd Edition</span></div>
                   <div class="ad-bottom">
-                    <div class="ad-hl">After a Sold-Out First Edition — We're Back.</div>
-                    <div class="ad-chips"><span class="ad-chip">India's Top Developers</span><span class="ad-chip-ghost">One Roof</span></div>
-                    <div class="ad-meta"><span class="ad-meta-text">📅 13–14 June · Invespy Gallery · Dubai</span><button class="ad-cta-micro">Reserve Your Place</button></div>
+                    <div class="ad-hl">After a Sold-Out First Edition.</div>
+                    <div class="ad-date-strip"><span class="ad-date-text">India's Top Developers · Dubai · 13–14 June</span><button class="ad-cta-micro">Reserve Your Place</button></div>
                   </div>
                 </div>
                 <div class="ig-reactions">
@@ -947,11 +1031,10 @@ Seats are limited. Register now — it's free.</div>
                 <div class="ig-img-wrap ratio-4-5">
                   <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3E5AnTUpQr4dwsCJMWb967CeuMr/hf_20260601_134729_2d11a809-a6e8-43ec-b456-9e70c3ab0fd1.png" loading="lazy" alt="Investor Candid">
                   <div class="ad-grad"></div>
-                  <div class="ad-top"><span class="ad-logo">NRI Privé</span><span class="ad-edition">Dubai</span></div>
+                  <div class="ad-top"><span class="ad-logo">NRI Privé</span></div>
                   <div class="ad-bottom">
-                    <div class="ad-hl">This is Where UAE-Based Indians Make Their Move.</div>
-                    <div class="ad-chips"><span class="ad-chip">Exclusive Access</span><span class="ad-chip-ghost">Compare All Developers</span></div>
-                    <div class="ad-meta"><span class="ad-meta-text">📍 Invespy Gallery · 13–14 June</span><button class="ad-cta-micro">Register Now</button></div>
+                    <div class="ad-hl">This Is Where UAE Indians Make Their Move.</div>
+                    <div class="ad-date-strip"><span class="ad-date-text">Invespy Gallery · Dubai · 13–14 June</span><button class="ad-cta-micro">Register Now</button></div>
                   </div>
                 </div>
                 <div class="ig-reactions">
@@ -977,9 +1060,8 @@ Seats are limited. Register now — it's free.</div>
               <div class="ig-story-overlay"></div>
               <div class="ad-story-mid">
                 <div class="ad-story-logo">NRI Privé</div>
-                <div class="ad-story-hl">Don't Miss It Again. 2nd Edition is Here.</div>
-                <div class="ad-story-chips"><span class="ad-story-chip">Edition 2</span><span class="ad-story-chip">Sold Out First Time</span></div>
-                <div class="ad-story-sub">13–14 June · Invespy Gallery · Dubai · Register Free</div>
+                <div class="ad-story-hl">The Second Edition Is Here.</div>
+                <div class="ad-story-sub">13–14 June · Invespy Gallery · Dubai</div>
               </div>
               <div class="ig-story-top">
                 <div class="ig-prog-bars">
